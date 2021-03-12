@@ -5,6 +5,23 @@ import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 import java.util.*;
 
 public class Main {
+
+    static void pridavanie(Map<String, String> slovnik) {
+        int pocet = ZKlavesnice.readInt("Zadaj kolko slov chces zadat");
+        int i = 0;
+        while(i < pocet){
+            String slovo = ZKlavesnice.readString("Zadaj slovo");
+            while (slovnik.containsKey(slovo)) {
+                System.out.println("Slovo sa uz v slovniku nachadza, zadaj ine slovo");
+
+                slovo = ZKlavesnice.readString("Zadaj slovo");
+            }
+
+            String preklad = ZKlavesnice.readString("Zadaj preklad slova");
+            slovnik.put(slovo, preklad);
+            i++;
+        }
+    }
     public static void main(String[] args) {
         /*
         ArrayList<String> slova = new ArrayList<>();
@@ -112,6 +129,9 @@ public class Main {
             }
             System.out.println();
         }*/
+
+        //Triedenie
+        /*
         List<Zivocich> list = new ArrayList<>();
         int n = ZKlavesnice.readInt("Zadaj pocet zivocichov") ;
         for(int i = 0; i < n; i++){
@@ -170,6 +190,20 @@ public class Main {
             else {
                 System.out.println(((Pes)elem).meno);
             }
+        }*/
+
+        Map<String, String> slovnik = new HashMap<>();
+        slovnik.put("Yes", "Ano");
+        slovnik.put("No", "Nie");
+        slovnik.put("object oriented programming", "oop");
+
+        pridavanie(slovnik);
+
+        for (var elem:slovnik.keySet()){
+            System.out.println(elem+ " " + slovnik.get(elem));
+
         }
+
+
     }
 }
